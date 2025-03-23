@@ -7,10 +7,15 @@ import Warning from "../ui/warning";
 import CartIcon from "../ui/cart";
 import { Categories } from "@/api/categories/categories";
 
-
 export default function Header() {
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
   const [cartOpen, setCartOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(false);
+
+  // Function to be passed to Warning component
+  const handleWarningDismiss = () => {
+    setShowHeader(true);
+  };
 
   const container = {
     hidden: { opacity: 0 },
@@ -29,107 +34,122 @@ export default function Header() {
 
   return (
     <>
-      <Warning />
-      <motion.header
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="bg-gray-300 dark:bg-gray-800 shadow-sm sticky top-0 z-40 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3">
-            <Link href="/">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center"
-              >
-                <motion.h1 
-                  className="text-3xl font-extrabold tracking-wider text-gray-800 dark:text-gray-300 uppercase"
-                  whileHover={{ 
-                    textShadow: "0px 0px 8px rgba(209, 213, 219, 0.5)"
-                  }}
-                >
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-800 dark:from-gray-300 dark:to-gray-300 letter-spacing-wide">
-                    TROTTA
-                  </span>
-                </motion.h1>
-              </motion.div>
-            </Link>
+      <Warning onDismiss={handleWarningDismiss} />
 
-            <motion.nav
-              variants={container}
-              initial="hidden"
-              animate="show"
-              className="hidden md:flex space-x-10"
-            >
-              {Categories.map((category) => (
-                <motion.div
-                  key={category.id}
-                  variants={item}
-                  onHoverStart={() => setActiveCategory(category.id)}
-                  onHoverEnd={() => setActiveCategory(null)}
-                  className="relative"
-                >
-                  <Link href={`/category/${category.id}`}>
-                    <motion.span
-                      whileHover={{ 
-                        scale: 1.05,
-                        letterSpacing: "0.05em"
-                      }}
-                      className="text-gray-800 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-300 font-medium uppercase text-sm tracking-wider transition-all"
-                    >
-                      {category.name}
-                    </motion.span>
-                  </Link>
-
-                  {activeCategory === category.id && (
+      <AnimatePresence>
+        {showHeader && (
+          <motion.header
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", damping: 15, stiffness: 100 }}
+            className="bg-gray-300 dark:bg-gray-800 shadow-sm sticky top-0 z-40 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Three-column layout for perfect centering */}
+              <div className="grid grid-cols-3 items-center py-3">
+                {/* Left column - Logo */}
+                <div className="flex justify-start">
+                  <Link href="/">
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="absolute z-50 mt-2 w-64 bg-gray-300 dark:bg-gray-800 rounded-md shadow-md p-4 text-sm text-gray-800 dark:text-gray-300 border border-gray-400 dark:border-gray-700"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center"
                     >
-                      {category.description}
+                      <motion.h1 
+                        className="text-3xl font-extrabold tracking-wider text-gray-800 dark:text-gray-300 uppercase mt-2 sm:mt-0"
+                        whileHover={{ 
+                          textShadow: "0px 0px 8px rgba(209, 213, 219, 0.5)"
+                        }}
+                      >
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-800 to-gray-800 dark:from-gray-300 dark:to-gray-300 letter-spacing-wide">
+                          TROTTA
+                        </span>
+                      </motion.h1>
                     </motion.div>
-                  )}
-                </motion.div>
-              ))}
-            </motion.nav>
-            <div className="flex items-center space-x-4">
-              {/* Cart Icon */}
-              <CartIcon 
-                itemCount={3} 
-                onClick={() => setCartOpen(!cartOpen)}
-              />
-              
-              {/* Mobile Menu Button */}
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="md:hidden flex items-center"
-              >
-                <button className="text-gray-800 dark:text-gray-300">
-                  <svg
-                    className="h-6 w-6"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  </Link>
+                </div>
+
+                {/* Middle column - Navigation */}
+                <div className="flex justify-center">
+                  <motion.nav
+                    variants={container}
+                    initial="hidden"
+                    animate="show"
+                    className="hidden md:flex space-x-8"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                </button>
-              </motion.div>
+                    {Categories.map((category) => (
+                      <motion.div
+                        key={category.id}
+                        variants={item}
+                        onHoverStart={() => setActiveCategory(category.id)}
+                        onHoverEnd={() => setActiveCategory(null)}
+                        className="relative"
+                      >
+                        <Link href={category.href}>
+                          <motion.span
+                            whileHover={{ 
+                              scale: 1.05,
+                              letterSpacing: "0.05em"
+                            }}
+                            className="text-gray-800 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-300 font-medium uppercase text-sm tracking-wider transition-all"
+                          >
+                            {category.name}
+                          </motion.span>
+                        </Link>
+                        <AnimatePresence>
+                          {activeCategory === category.id && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 10 }}
+                              className="absolute z-50 mt-2 w-64 bg-gray-300 dark:bg-gray-800 rounded-md shadow-md p-4 text-sm text-gray-800 dark:text-gray-300 border border-gray-400 dark:border-gray-700"
+                            >
+                              {category.description}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    ))}
+                  </motion.nav>
+                </div>
+
+                {/* Right column - Cart and Mobile Menu */}
+                <div className="flex justify-end items-center space-x-4">
+                  {/* Cart Icon */}
+                  <CartIcon 
+                    itemCount={3} 
+                    onClick={() => setCartOpen(!cartOpen)}
+                  />
+                  
+                  {/* Mobile Menu Button */}
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="md:hidden flex items-center"
+                  >
+                    <button className="text-gray-800 dark:text-gray-300">
+                      <svg
+                        className="h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 6h16M4 12h16M4 18h16"
+                        />
+                      </svg>
+                    </button>
+                  </motion.div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </motion.header>
+          </motion.header>
+        )}
+      </AnimatePresence>
       
       {/* Cart Dropdown/Sidebar */}
       <AnimatePresence>
@@ -173,8 +193,6 @@ export default function Header() {
                     Continuar Comprando
                   </motion.button>
                 </div>
-                
-                {/* Will be replaced with actual cart items */}
               </div>
               
               {/* Cart footer with total and checkout */}

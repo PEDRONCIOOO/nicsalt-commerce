@@ -24,3 +24,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+::-webkit-scrollbar{
+  width: 7px;
+  border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #1e2939;
+  border-radius: 15px;
+}

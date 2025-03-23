@@ -3,7 +3,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
-export default function Warning() {
+interface WarningProps {
+  onDismiss: () => void;
+}
+
+export default function Warning({ onDismiss }: WarningProps) {
     const [isVisible, setIsVisible] = useState(true);
     const [isMobile, setIsMobile] = useState(false);
 
@@ -22,6 +26,11 @@ export default function Warning() {
         // Cleanup
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
+
+    const handleClose = () => {
+        setIsVisible(false);
+        onDismiss(); // Call the callback from the parent
+    };
 
     if (!isVisible) return null;
 
@@ -62,15 +71,15 @@ export default function Warning() {
                                 </div>
                             </div>
                             
-                            <p className="text-amber-800 dark:text-amber-200 mb-4">
-                                Produtos com nicotina. Nicotina é uma substância extremamente viciante.
+                            <p className="text-amber-800 dark:text-amber-200 mb-4 text-left">
+                                Produtos com nicotina. Nicotina é uma substância extremamente viciante, nós não nos responsabilizamos pelo uso indevido dos produtos. A venda é proibida para menores de 18 anos.
                             </p>
                             
                             <div className="flex justify-end">
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => setIsVisible(false)}
+                                    onClick={handleClose}
                                     className="px-4 py-2 bg-amber-200 dark:bg-amber-800 text-amber-800 dark:text-amber-200 rounded-md font-medium"
                                 >
                                     Entendi
@@ -108,7 +117,7 @@ export default function Warning() {
                                         </svg>
                                     </motion.div>
                                     <div className="ml-3 text-base font-medium text-amber-800 dark:text-amber-200">
-                                        <span className="font-bold">Atenção!</span> Esses produtos contém nicotina. Nicotina é uma substância extremamente viciante.
+                                        <span className="font-bold">Atenção!</span> substância extremamente viciante, nós não nos responsabilizamos pelo uso indevido dos produtos. A venda é proibida para menores de 18 anos.
                                     </div>
                                 </div>
                                 <div className="flex-shrink-0 ml-3">
@@ -116,7 +125,7 @@ export default function Warning() {
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         type="button"
-                                        onClick={() => setIsVisible(false)}
+                                        onClick={handleClose}
                                         className="flex p-2 rounded-md hover:bg-amber-200 dark:hover:bg-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-600"
                                         aria-label="Fechar alerta"
                                     >
