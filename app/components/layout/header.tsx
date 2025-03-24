@@ -42,7 +42,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ type: "spring", damping: 15, stiffness: 100 }}
-            className="bg-gray-300 dark:bg-gray-800 shadow-sm sticky top-0 z-40 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90"
+            className="bg-gray-300 dark:bg-black shadow-sm sticky top-0 z-40 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               {/* Three-column layout for perfect centering */}

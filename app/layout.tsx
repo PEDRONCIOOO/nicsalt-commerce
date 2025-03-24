@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TROTTA - Produtos de Nicotina",
+  title: "TROTTA - Nic-Salt e Pods",
   description: "Uma grande variedade de produtos de nicotina de alta qualidade",
 };
 

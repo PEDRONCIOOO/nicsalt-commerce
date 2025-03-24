@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import container1 from "@/public/ct1.png";
-import container2 from "@/public/ct2.png"
-import container3 from "@/public/ct3.png"
+import container2 from "@/public/ct2.png";
+import container3 from "@/public/ct3.png";
 
 export default function Hero1() {
   // Animation variants for Framer Motion
@@ -20,9 +20,15 @@ export default function Hero1() {
     },
   };
 
+  // Combined itemVariants with border animation
   const itemVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    hover: { 
+      scale: 1.05, 
+      borderColor: "rgba(255, 255, 255, 0.8)",
+      transition: { duration: 0.3 }
+    },
   };
 
   const buttonVariants = {
@@ -39,8 +45,9 @@ export default function Hero1() {
     >
       {/* Main Banner */}
       <motion.div
-        className="md:col-span-2 relative bg-gray-800 rounded-lg overflow-hidden shadow-lg"
+        className="md:col-span-2 relative bg-gray-800 rounded-lg overflow-hidden shadow-lg border-2 border-gray-700 transition-all"
         variants={itemVariants}
+        whileHover="hover"
       >
         <Image src={container1} alt="Pods NX" className="w-full h-auto" />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent opacity-75"></div>
@@ -76,8 +83,9 @@ export default function Hero1() {
       <div className="grid grid-cols-1 gap-6">
         {/* Banner 1 */}
         <motion.div
-          className="relative bg-gray-700 rounded-lg overflow-hidden shadow-lg"
+          className="relative bg-gray-700 rounded-lg overflow-hidden shadow-lg border-2 border-gray-600 transition-all"
           variants={itemVariants}
+          whileHover="hover"
         >
           <Image src={container3} alt="Pods NX" className="w-full h-auto" />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-transparent opacity-75"></div>
@@ -103,8 +111,9 @@ export default function Hero1() {
 
         {/* Banner 2 */}
         <motion.div
-          className="relative bg-gray-600 rounded-lg overflow-hidden shadow-lg"
+          className="relative bg-gray-600 rounded-lg overflow-hidden shadow-lg border-2 border-gray-500 transition-all"
           variants={itemVariants}
+          whileHover="hover"
         >
           <Image src={container2} alt="Pods NX" className="w-full h-auto" />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-transparent opacity-75"></div>
