@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Warning from "../ui/warning";
@@ -11,10 +11,82 @@ export default function Header() {
   const [activeCategory, setActiveCategory] = useState<number | null>(null);
   const [cartOpen, setCartOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Function to be passed to Warning component
   const handleWarningDismiss = () => {
     setShowHeader(true);
+  };
+
+  // Track scroll direction
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < 10) {
+        // Always show header at the top of page
+        setVisible(true);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show header
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and not at the very top - hide header
+        setVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  // Staggered animation variants
+  const headerVariants = {
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 15,
+        stiffness: 100,
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+      },
+    },
+    hidden: {
+      y: -100,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 15,
+        stiffness: 100,
+        when: "afterChildren",
+        staggerChildren: 0.1,
+        staggerDirection: -1,
+      },
+    },
+  };
+
+  // Child animation variants
+  const itemVariants = {
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { type: "spring", damping: 15, stiffness: 150 }
+    },
+    hidden: { 
+      y: -20, 
+      opacity: 0,
+      transition: { type: "spring", damping: 15, stiffness: 150 }
+    },
+  };
+
+  const navItemVariants = {
+    hidden: { y: -20, opacity: 0 },
+    show: { y: 0, opacity: 1 },
+    exit: { y: -20, opacity: 0 }
   };
 
   const container = {
@@ -25,11 +97,13 @@ export default function Header() {
         staggerChildren: 0.1,
       },
     },
-  };
-
-  const item = {
-    hidden: { y: -20, opacity: 0 },
-    show: { y: 0, opacity: 1 },
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
+    }
   };
 
   return (
@@ -39,16 +113,16 @@ export default function Header() {
       <AnimatePresence>
         {showHeader && (
           <motion.header
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", damping: 15, stiffness: 100 }}
+            variants={headerVariants}
+            initial="hidden"
+            animate={visible ? "visible" : "hidden"}
             className="bg-gray-300 dark:bg-black shadow-sm sticky top-0 z-40 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               {/* Three-column layout for perfect centering */}
               <div className="grid grid-cols-3 items-center py-3">
                 {/* Left column - Logo */}
-                <div className="flex justify-start">
+                <motion.div className="flex justify-start" variants={itemVariants}>
                   <Link href="/">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
@@ -67,20 +141,21 @@ export default function Header() {
                       </motion.h1>
                     </motion.div>
                   </Link>
-                </div>
+                </motion.div>
 
                 {/* Middle column - Navigation */}
-                <div className="flex justify-center">
+                <motion.div className="flex justify-center" variants={itemVariants}>
                   <motion.nav
                     variants={container}
                     initial="hidden"
                     animate="show"
+                    exit="exit"
                     className="hidden md:flex space-x-8"
                   >
                     {Categories.map((category) => (
                       <motion.div
                         key={category.id}
-                        variants={item}
+                        variants={navItemVariants}
                         onHoverStart={() => setActiveCategory(category.id)}
                         onHoverEnd={() => setActiveCategory(null)}
                         className="relative"
@@ -111,10 +186,13 @@ export default function Header() {
                       </motion.div>
                     ))}
                   </motion.nav>
-                </div>
+                </motion.div>
 
                 {/* Right column - Cart and Mobile Menu */}
-                <div className="flex justify-end items-center space-x-4">
+                <motion.div 
+                  className="flex justify-end items-center space-x-4"
+                  variants={itemVariants}
+                >
                   {/* Cart Icon */}
                   <CartIcon 
                     itemCount={3} 
@@ -144,7 +222,7 @@ export default function Header() {
                       </svg>
                     </button>
                   </motion.div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.header>
@@ -161,6 +239,7 @@ export default function Header() {
             transition={{ type: "spring", damping: 25 }}
             className="fixed top-0 right-0 h-full w-full sm:w-96 bg-gray-300 dark:bg-gray-800 shadow-xl z-50"
           >
+            {/* Cart content remains unchanged */}
             <div className="p-4 h-full flex flex-col">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold text-gray-800 dark:text-gray-300">Seu Carrinho</h2>

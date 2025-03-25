@@ -17,30 +17,94 @@ export interface Product {
 
 // Products data
 export const Products: Product[] = [
-  // PODS Category (5 products)
+  // PODS Category (keeping the featured one)
   {
     id: 1,
-    name: "Mi-Pod Pro",
-    description: "O Mi-Pod Pro é um dispositivo de pod premium com bateria de 950mAh e sistema auto-draw. Seu design elegante e compacto oferece excelente portabilidade sem comprometer a qualidade de vapor. Compatível com pods de 2ml, proporciona uma experiência de vape suave e satisfatória com controle de fluxo de ar ajustável.",
-    price: 249.90,
-    category: "Pods",
-    image: "/images/products/pods/mi-pod-pro.png",
+    name: "Nic-Salt BLVK Unicorn - Berry Peach",
+    description: "Iced Berry Peach da BLVK Pink Salt Series, desfrute de uma dupla deliciosamente refrescante de frutas vermelhas e pêssegos para criar um sabor deliciosamente crescente.",
+    price: 149.90,
+    category: "Salt",
+    image: "/salt/berrypeach.jpeg",
     inStock: true,
     featured: true,
-    colors: ["Preto", "Prata", "Azul"],
+    flavors: ["Frutas", "Pêssego", "Morango"],
+    nicotineStrength: 50,
     volume: 2
+  },
+  
+  // SALT (Nic Salts) Category (keeping the featured one)
+  {
+    id: 7,
+    name: "Nic-Salt BLVK Unicorn - Pinapple Ice",
+    description: "Pineapple Ice por BLVK Salt Plus Series, um paraíso tropical repleto de sabores de abacaxi e uma brisa gelada.",
+    price: 129.90,
+    category: "Salt",
+    image: "/salt/pineapple.jpeg",
+    inStock: true,
+    featured: true,
+    nicotineStrength: 50,
+    volume: 30,
+    flavors: ["Manga", "Cítrico"]
+  },
+  
+  // VAPES (Disposables) Category (keeping the featured one)
+  {
+    id: 11,
+    name: "Nic-Salt BLVK Unicorn - Spearmint",
+    description: "Spearmint por BLVK Unicorn Nic Salt, vem com sorvete de menta e refrescante mentol para criar uma obrigação de teste para os amantes de sabores mentolados frescos. A deliciosa combinação de sabores oferecidos pelo BLVK Nic Salt.",
+    price: 119.90,
+    category: "Salt",
+    image: "/salt/spearmint.jpeg",
+    inStock: true,
+    featured: true,
+    nicotineStrength: 50,
+    volume: 13,
+    flavors: ["Menta", "Fresco", "Ice"]
+  },
+  
+  // JUICES (E-liquids) Category (keeping the featured one)
+  {
+    id: 17,
+    name: "Nic-Salt BLVK Unicorn - Lychee Menthol",
+    description: "BLVK Unicorn Nic Salt Lychee, líquido vape de lichia doce com um toque de mentol fresco cria uma explosão de sabor frutado e frio como você nunca experimentou antes.",
+    price: 119.90,
+    category: "Salt",
+    image: "/salt/lychie.jpeg",
+    inStock: true,
+    featured: true,
+    nicotineStrength: 6,
+    volume: 120,
+    flavors: ["Lychee", "Menta", "Frutas"]
+  },
+  {
+    id: 6,
+    name: "Nic-Salt BLVK Unicorn - Strawberry Cream",
+    description: "BLVK Unicorn Nic Salt Strawberry Cream, uma deliciosa fatia de bolo de morango coberto com creme doce e pedaços de biscoito de Graham.",
+    price: 89.90,
+    category: "Salt",
+    image: "/salt/strabewrry-cream.jpeg",
+    inStock: true,
+    nicotineStrength: 35,
+    volume: 30,
+    flavors: ["Strawberry", "Baunilha", "Morango"]
   },
   {
     id: 2,
-    name: "Voopoo Vinci X",
-    description: "O Voopoo Vinci X é um pod mod avançado com bateria externa de 18650mAh e potência máxima de 70W. Equipado com o chip GENE.AI, oferece tempos de disparo inferiores a 0.001s e múltiplos modos de operação. Seu tanque de 5.5ml e display colorido de 0.96 polegadas tornam-no uma escolha robusta para vapers intermediários.",
-    price: 329.90,
-    category: "Pods",
-    image: "/images/products/pods/voopoo-vinci.png",
+    name: "Nic-Salt BLVK Unicorn - Apple Ice",
+    description: "Sour Apple Ice por BLVK Salt Plus Series, uma mistura de maçã verde azeda equilibrada por uma sensação doce e calmante de gelo.",
+    price: 120.90,
+    category: "Salt",
+    image: "/salt/appleice.jpeg",
     inStock: true,
-    colors: ["Preto Carbono", "Vermelho", "Verde"],
-    volume: 5.5
+    volume: 30,
+    flavors: ["Ice", "Maça-Verde", "Menta"],
+    nicotineStrength: 50
   },
+  
+  /* Commented Products Below */
+  
+  // Additional PODS Products
+  /*
   {
     id: 3,
     name: "Uwell Caliburn G",
@@ -75,33 +139,10 @@ export const Products: Product[] = [
     colors: ["Fibra de Carbono", "Carbono Azul", "Prateado"],
     volume: 2
   },
+  */
 
-  // SALT (Nic Salts) Category (5 products)
-  {
-    id: 6,
-    name: "NicSalt BLVK Unicorn - Cuban Cigar",
-    description: "O NicSalt BLVK Unicorn Cuban Cigar oferece uma experiência autêntica de charuto cubano premium em formato de sal de nicotina. Com notas ricas de tabaco tostado, madeira e toques de baunilha, proporciona uma sensação de fumar um charuto cubano artesanal com a conveniência do vape. Disponível em concentrações de 30mg e 50mg.",
-    price: 89.90,
-    category: "Salt",
-    image: "/images/products/salt/blvk-cuban.png",
-    inStock: true,
-    nicotineStrength: 50,
-    volume: 30,
-    flavors: ["Tabaco", "Baunilha", "Madeira"]
-  },
-  {
-    id: 7,
-    name: "NicSalt Nasty Juice - Cushman Mango",
-    description: "O NicSalt Nasty Juice Cushman Mango é uma combinação perfeita de mangas tropicais maduras com um toque cítrico refrescante. Sua formulação balanceada proporciona uma hit suave de nicotina com sabor intenso de manga. Um dos líquidos mais populares da linha Nasty Juice, ideal para uso diário.",
-    price: 79.90,
-    category: "Salt",
-    image: "/images/products/salt/nasty-cushman.png",
-    inStock: true,
-    featured: true,
-    nicotineStrength: 30,
-    volume: 30,
-    flavors: ["Manga", "Cítrico"]
-  },
+  // Additional SALT Products
+  /*
   {
     id: 8,
     name: "NicSalt Juice Head - Blueberry Lemon",
@@ -139,21 +180,10 @@ export const Products: Product[] = [
     volume: 30,
     flavors: ["Caramelo", "Manteiga", "Baunilha"]
   },
+  */
 
-  // VAPES (Disposables) Category (5 products)
-  {
-    id: 11,
-    name: "Elf Bar BC5000",
-    description: "O Elf Bar BC5000 é um dispositivo descartável premium com até 5000 puffs. Equipado com bateria de 650mAh e 13ml de e-líquido, oferece uma experiência de vape consistente do primeiro ao último trago. Seu design ergonômico e ampla variedade de sabores intensos o tornaram um dos descartáveis mais populares do mercado.",
-    price: 119.90,
-    category: "Vapes",
-    image: "/images/products/vapes/elfbar-5000.png",
-    inStock: true,
-    featured: true,
-    nicotineStrength: 50,
-    volume: 13,
-    flavors: ["Morango Kiwi", "Blue Razz", "Banana Ice"]
-  },
+  // Additional VAPES Products
+  /*
   {
     id: 12,
     name: "Lost Mary OS5000",
@@ -203,8 +233,10 @@ export const Products: Product[] = [
     volume: 6.5,
     flavors: ["Maçã Verde", "Uva", "Menta"]
   },
+  */
 
-  // JUICES (E-liquids) Category (5 products)
+  // Additional JUICES Products
+  /*
   {
     id: 16,
     name: "Juice Nasty - Double Kiwi",
@@ -216,19 +248,6 @@ export const Products: Product[] = [
     nicotineStrength: 3,
     volume: 60,
     flavors: ["Kiwi", "Gelo"]
-  },
-  {
-    id: 17,
-    name: "Juice Humble - Donkey Kahn",
-    description: "O Humble Donkey Kahn é uma explosão de banana madura com notas de caramelo e biscoito. Esta interpretação do clássico pudim de banana combina perfeitamente doçura e cremosidade. Produzido nos EUA com glicerina vegetal e propilenoglicol de altíssima qualidade, garante uma experiência de vape premium com nuvens densas.",
-    price: 119.90,
-    category: "Juices",
-    image: "/images/products/juices/humble-donkey.png",
-    inStock: true,
-    featured: true,
-    nicotineStrength: 6,
-    volume: 120,
-    flavors: ["Banana", "Caramelo", "Biscoito"]
   },
   {
     id: 18,
@@ -267,4 +286,5 @@ export const Products: Product[] = [
     volume: 100,
     flavors: ["Mirtilo", "Manteiga", "Torrada"]
   }
+  */
 ];
