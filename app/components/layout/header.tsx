@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Warning from "../ui/warning";
@@ -13,58 +13,104 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState(false);
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
+  
+  // Animation lock to prevent interruptions
+  const isAnimating = useRef(false);
+  const animationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
   // Function to be passed to Warning component
   const handleWarningDismiss = () => {
     setShowHeader(true);
   };
 
-  // Track scroll direction
+  // Track scroll direction with debounce
   useEffect(() => {
+    // Threshold for scroll detection sensitivity
+    const scrollThreshold = 5;
+    let scrollTimeout: NodeJS.Timeout | null = null;
+    
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      if (currentScrollY < 10) {
-        // Always show header at the top of page
-        setVisible(true);
-      } else if (currentScrollY < lastScrollY) {
-        // Scrolling up - show header
-        setVisible(true);
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down and not at the very top - hide header
-        setVisible(false);
+      // Clear previous timeout to implement debouncing
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
       }
       
-      setLastScrollY(currentScrollY);
+      // Don't process scroll events if we're currently animating
+      if (isAnimating.current) return;
+      
+      // Debounce scroll events to prevent rapid state changes
+      scrollTimeout = setTimeout(() => {
+        // Ignore small scroll movements
+        if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) return;
+        
+        if (currentScrollY < 10) {
+          // Always show header at the top of page
+          setVisible(true);
+        } else if (currentScrollY < lastScrollY) {
+          // Scrolling up - show header
+          setVisible(true);
+        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrolling down and not at the very top - hide header
+          // Small delay before hiding to prevent flickering
+          setVisible(false);
+        }
+        
+        setLastScrollY(currentScrollY);
+      }, 0); // 50ms debounce delay
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      if (animationTimeoutRef.current) clearTimeout(animationTimeoutRef.current);
+    };
   }, [lastScrollY]);
 
-  // Staggered animation variants
+  // Function to handle animation start/end
+  const handleAnimationStart = () => {
+    isAnimating.current = true;
+    
+    // Clear any existing animation timeout
+    if (animationTimeoutRef.current) {
+      clearTimeout(animationTimeoutRef.current);
+    }
+  };
+  
+  const handleAnimationComplete = () => {
+    // Set a small delay before allowing new animations
+    animationTimeoutRef.current = setTimeout(() => {
+      isAnimating.current = false;
+    }, 100);
+  };
+
+  // Staggered animation variants (fixed opacity issue)
   const headerVariants = {
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         type: "spring",
-        damping: 15,
-        stiffness: 100,
+        damping: 20, // Increased damping for smoother animation
+        stiffness: 120, // Slightly increased stiffness
         when: "beforeChildren",
         staggerChildren: 0.1,
+        duration: 0.3, // Explicit duration to ensure animation completes
       },
     },
     hidden: {
       y: -100,
-      opacity: 1,
+      opacity: 0, // Changed from 1 to 0 for proper fading
       transition: {
         type: "spring",
-        damping: 15,
-        stiffness: 100,
+        damping: 20,
+        stiffness: 120,
         when: "afterChildren",
-        staggerChildren: 0.1,
+        staggerChildren: 0.05, // Faster stagger for hiding
         staggerDirection: -1,
+        duration: 0.2, // Slightly faster exit animation
       },
     },
   };
@@ -74,12 +120,12 @@ export default function Header() {
     visible: { 
       y: 0, 
       opacity: 1,
-      transition: { type: "spring", damping: 15, stiffness: 150 }
+      transition: { type: "spring", damping: 20, stiffness: 180, duration: 0.25 }
     },
     hidden: { 
       y: -20, 
       opacity: 0,
-      transition: { type: "spring", damping: 15, stiffness: 150 }
+      transition: { type: "spring", damping: 20, stiffness: 180, duration: 0.2 }
     },
   };
 
@@ -94,7 +140,7 @@ export default function Header() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.08,
       },
     },
     exit: {
@@ -110,13 +156,15 @@ export default function Header() {
     <>
       <Warning onDismiss={handleWarningDismiss} />
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {showHeader && (
           <motion.header
             variants={headerVariants}
             initial="hidden"
             animate={visible ? "visible" : "hidden"}
-            className="bg-gray-300 dark:bg-black shadow-sm sticky top-0 z-40 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90"
+            onAnimationStart={handleAnimationStart}
+            onAnimationComplete={handleAnimationComplete}
+            className="bg-gray-300 dark:bg-black shadow-sm sticky w-full top-0 z-40 backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90"
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               {/* Three-column layout for perfect centering */}

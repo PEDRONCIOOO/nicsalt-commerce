@@ -17,9 +17,8 @@ export interface Product {
 
 // Products data
 export const Products: Product[] = [
-  // PODS Category (keeping the featured one)
   {
-    id: 1,
+    id: 143,
     name: "Nic-Salt BLVK Unicorn - Berry Peach",
     description: "Iced Berry Peach da BLVK Pink Salt Series, desfrute de uma dupla deliciosamente refrescante de frutas vermelhas e pêssegos para criar um sabor deliciosamente crescente.",
     price: 149.90,
@@ -29,15 +28,13 @@ export const Products: Product[] = [
     featured: true,
     flavors: ["Frutas", "Pêssego", "Morango"],
     nicotineStrength: 50,
-    volume: 2
+    volume: 30
   },
-  
-  // SALT (Nic Salts) Category (keeping the featured one)
   {
-    id: 7,
+    id: 275,
     name: "Nic-Salt BLVK Unicorn - Pinapple Ice",
     description: "Pineapple Ice por BLVK Salt Plus Series, um paraíso tropical repleto de sabores de abacaxi e uma brisa gelada.",
-    price: 129.90,
+    price: 149.90,
     category: "Salt",
     image: "/salt/pineapple.jpeg",
     inStock: true,
@@ -46,41 +43,37 @@ export const Products: Product[] = [
     volume: 30,
     flavors: ["Manga", "Cítrico"]
   },
-  
-  // VAPES (Disposables) Category (keeping the featured one)
   {
-    id: 11,
+    id: 319,
     name: "Nic-Salt BLVK Unicorn - Spearmint",
     description: "Spearmint por BLVK Unicorn Nic Salt, vem com sorvete de menta e refrescante mentol para criar uma obrigação de teste para os amantes de sabores mentolados frescos. A deliciosa combinação de sabores oferecidos pelo BLVK Nic Salt.",
-    price: 119.90,
+    price: 139.90,
     category: "Salt",
     image: "/salt/spearmint.jpeg",
     inStock: true,
     featured: true,
     nicotineStrength: 50,
-    volume: 13,
+    volume: 30,
     flavors: ["Menta", "Fresco", "Ice"]
   },
-  
-  // JUICES (E-liquids) Category (keeping the featured one)
   {
-    id: 17,
+    id: 468,
     name: "Nic-Salt BLVK Unicorn - Lychee Menthol",
     description: "BLVK Unicorn Nic Salt Lychee, líquido vape de lichia doce com um toque de mentol fresco cria uma explosão de sabor frutado e frio como você nunca experimentou antes.",
-    price: 119.90,
+    price: 149.90,
     category: "Salt",
     image: "/salt/lychie.jpeg",
     inStock: true,
     featured: true,
-    nicotineStrength: 6,
-    volume: 120,
+    nicotineStrength: 50,
+    volume: 30,
     flavors: ["Lychee", "Menta", "Frutas"]
   },
   {
-    id: 6,
+    id: 527,
     name: "Nic-Salt BLVK Unicorn - Strawberry Cream",
     description: "BLVK Unicorn Nic Salt Strawberry Cream, uma deliciosa fatia de bolo de morango coberto com creme doce e pedaços de biscoito de Graham.",
-    price: 89.90,
+    price: 119.90,
     category: "Salt",
     image: "/salt/strabewrry-cream.jpeg",
     inStock: true,
@@ -89,202 +82,301 @@ export const Products: Product[] = [
     flavors: ["Strawberry", "Baunilha", "Morango"]
   },
   {
-    id: 2,
+    id: 632,
     name: "Nic-Salt BLVK Unicorn - Apple Ice",
     description: "Sour Apple Ice por BLVK Salt Plus Series, uma mistura de maçã verde azeda equilibrada por uma sensação doce e calmante de gelo.",
-    price: 120.90,
+    price: 149.90,
     category: "Salt",
     image: "/salt/appleice.jpeg",
     inStock: true,
-    volume: 30,
-    flavors: ["Ice", "Maça-Verde", "Menta"],
-    nicotineStrength: 50
-  },
-  
-  /* Commented Products Below */
-  
-  // Additional PODS Products
-  /*
-  {
-    id: 3,
-    name: "Uwell Caliburn G",
-    description: "O Caliburn G da Uwell é um sistema de pod compacto com bateria de 690mAh e carregamento tipo-C. Seu design de preenchimento superior e bobinas substituíveis de 0.8ohm mesh garantem excelente sabor e produção de vapor. Sistema dual de ativação por botão e auto-draw para versatilidade de uso.",
-    price: 189.90,
-    category: "Pods",
-    image: "/images/products/pods/caliburn-g.png",
-    inStock: true,
-    colors: ["Preto", "Vermelho", "Azul", "Rosa"],
-    volume: 2
-  },
-  {
-    id: 4,
-    name: "SMOK Nord 4",
-    description: "O SMOK Nord 4 é um sistema de pod com bateria integrada de 2000mAh e potência máxima de 80W. Compatível com bobinas RPM e RPM 2, possui um tanque de 4.5ml e ajuste de potência variável. Seu design ergonômico com painel lateral de couro e tela TFT de 0.69 polegadas oferece estilo e funcionalidade.",
-    price: 279.90,
-    category: "Pods",
-    image: "/images/products/pods/smok-nord-4.png",
-    inStock: true,
-    colors: ["Preto", "Azul Cobalto", "Vermelho", "Arco-íris"],
-    volume: 4.5
-  },
-  {
-    id: 5,
-    name: "Lost Vape Orion Q",
-    description: "O Lost Vape Orion Q é um pod system premium com chassi de liga de alumínio e painel de fibra de carbono. Sua bateria interna de 950mAh e chip avançado garantem performance consistente, enquanto seus pods de 2ml utilizam resistências de 1.0ohm para MTL perfeito. Ideal para vapers que buscam qualidade e discrição.",
-    price: 359.90,
-    category: "Pods",
-    image: "/images/products/pods/orion-q.png",
-    inStock: true,
-    featured: true,
-    colors: ["Fibra de Carbono", "Carbono Azul", "Prateado"],
-    volume: 2
-  },
-  */
-
-  // Additional SALT Products
-  /*
-  {
-    id: 8,
-    name: "NicSalt Juice Head - Blueberry Lemon",
-    description: "O NicSalt Juice Head Blueberry Lemon combina mirtilo suculento com limão ácido para criar um perfil de sabor equilibrado e refrescante. A doçura natural dos mirtilos complementa perfeitamente a acidez cítrica do limão, criando uma experiência de vape revigorante. Formulação de sal de nicotina para satisfação rápida.",
-    price: 94.90,
-    category: "Salt",
-    image: "/images/products/salt/juicehead-blueberry.png",
-    inStock: true,
     nicotineStrength: 50,
     volume: 30,
-    flavors: ["Mirtilo", "Limão"]
+    flavors: ["Ice", "Maça-Verde", "Menta"]
   },
   {
-    id: 9,
-    name: "NicSalt Dinner Lady - Lemon Tart",
-    description: "O NicSalt Dinner Lady Lemon Tart reproduz fielmente a sobremesa britânica clássica. Combina uma base de torta de merengue de limão cremosa com notas de merengue doce e massa folhada. Uma experiência de vape premium que equilibra perfeitamente acidez e doçura com a suavidade dos sais de nicotina.",
-    price: 109.90,
+    id: 741,
+    name: "Nic-Salt BLVK Unicorn - Banana Ice",
+    description: "Banana Ice por BLVK para sua Serie Salt Plus, desfrute de um sabor doce de banana gelada com perfeição.",
+    price: 119.90,
     category: "Salt",
-    image: "/images/products/salt/dinnerlady-lemon.png",
+    image: "/salt/bananaice.jpeg",
     inStock: true,
-    featured: true,
-    nicotineStrength: 30,
+    nicotineStrength: 35,
     volume: 30,
-    flavors: ["Limão", "Torta", "Creme"]
+    flavors: ["Gelada", "Banana"]
   },
   {
-    id: 10,
-    name: "NicSalt Glas - BSX Butterscotch",
-    description: "O NicSalt Glas BSX Butterscotch oferece uma experiência rica de caramelo de manteiga cremoso. Sua formulação equilibrada reproduz perfeitamente o doce clássico, combinando notas de manteiga, açúcar mascavo e baunilha. Um e-liquid premium para vapers que apreciam sabores doces e complexos.",
-    price: 99.90,
-    category: "Salt",
-    image: "/images/products/salt/glas-butterscotch.png",
-    inStock: true,
-    nicotineStrength: 50,
-    volume: 30,
-    flavors: ["Caramelo", "Manteiga", "Baunilha"]
-  },
-  */
-
-  // Additional VAPES Products
-  /*
-  {
-    id: 12,
-    name: "Lost Mary OS5000",
-    description: "O Lost Mary OS5000 oferece até 5000 puffs com sistema de fluxo de ar ajustável e design compacto. Sua bateria de 600mAh e 13ml de e-líquido proporcionam uma experiência de vape prolongada com sabores consistentes e intensos. A mesh coil integrada garante excelente produção de vapor e pureza de sabor.",
-    price: 109.90,
-    category: "Vapes",
-    image: "/images/products/vapes/lostmary-5000.png",
-    inStock: true,
-    nicotineStrength: 30,
-    volume: 13,
-    flavors: ["Melancia", "Mirtilo", "Triple Mango"]
-  },
-  {
-    id: 13,
-    name: "Fume Extra",
-    description: "O Fume Extra é um dispositivo descartável compacto com aproximadamente 1500 puffs. Seu design slim com bateria de 850mAh e 5ml de e-líquido oferece conveniência sem comprometer a qualidade. A bobina integrada de 1.4ohm proporciona um MTL perfeito, ideal para ex-fumantes que buscam uma transição fácil.",
-    price: 69.90,
-    category: "Vapes",
-    image: "/images/products/vapes/fume-extra.png",
-    inStock: true,
-    nicotineStrength: 50,
-    volume: 5,
-    flavors: ["Manga", "Menta", "Banana Ice"]
-  },
-  {
-    id: 14,
-    name: "Geek Bar Pulse",
-    description: "O Geek Bar Pulse é um vape descartável premium com até 15000 puffs. Sua bateria recarregável de 650mAh e 18ml de e-líquido oferecem uma experiência de longa duração. O sistema de airflow ajustável e indicador LED de bateria proporcionam controle preciso, enquanto a ampla gama de sabores satisfaz todos os paladares.",
+    id: 856,
+    name: "Nic-Salt BLVK Unicorn - Watermelon Ice",
+    description: "Watermelon Ice por BLVK Salt Plus Series, as fatias de melancia suculentas e refrescantes que você adora, geladas na perfeição.",
     price: 149.90,
-    category: "Vapes",
-    image: "/images/products/vapes/geekbar-pulse.png",
-    inStock: true,
-    featured: true,
-    nicotineStrength: 30,
-    volume: 18,
-    flavors: ["Morango Ice", "Blue Razz", "Maracujá"]
-  },
-  {
-    id: 15,
-    name: "Smok Novo Bar",
-    description: "O Smok Novo Bar combina a qualidade da Smok com a conveniência de um descartável. Oferece até 2000 puffs com bateria de 600mAh e 6.5ml de e-líquido. Seu design compacto e elegante com acabamento metálico premium e LED indicativo proporciona uma experiência superior aos descartáveis convencionais.",
-    price: 89.90,
-    category: "Vapes",
-    image: "/images/products/vapes/smok-novobar.png",
+    category: "Salt",
+    image: "/salt/watermelonice.jpeg",
     inStock: true,
     nicotineStrength: 50,
-    volume: 6.5,
-    flavors: ["Maçã Verde", "Uva", "Menta"]
-  },
-  */
-
-  // Additional JUICES Products
-  /*
-  {
-    id: 16,
-    name: "Juice Nasty - Double Kiwi",
-    description: "O e-líquido Nasty Double Kiwi combina kiwis maduros com um toque de gelo para uma experiência refrescante. A intensidade do kiwi é perfeitamente balanceada, criando um all-day vape ideal para os dias quentes. Produzido com ingredientes premium para máxima pureza de sabor e consistência vapor após vapor.",
-    price: 129.90,
-    category: "Juices",
-    image: "/images/products/juices/nasty-kiwi.png",
-    inStock: true,
-    nicotineStrength: 3,
-    volume: 60,
-    flavors: ["Kiwi", "Gelo"]
+    volume: 30,
+    flavors: ["Melancia", "Gelo"]
   },
   {
-    id: 18,
-    name: "Juice Coastal Clouds - Apple Peach Strawberry",
-    description: "O Coastal Clouds Apple Peach Strawberry combina maçã crocante, pêssego suculento e morangos doces para criar um perfil frutado harmonioso e refrescante. Este blend premium é envelhecido para permitir a perfeita fusão dos sabores, resultando em uma experiência de vape complexa e satisfatória do início ao fim.",
-    price: 139.90,
-    category: "Juices",
-    image: "/images/products/juices/coastal-apple.png",
-    inStock: true,
-    nicotineStrength: 3,
-    volume: 60,
-    flavors: ["Maçã", "Pêssego", "Morango"]
-  },
-  {
-    id: 19,
-    name: "Juice Pachamama - Fuji",
-    description: "O Pachamama Fuji combina suculentas maçãs Fuji com morangos maduros e nectarinas doces. Esta mistura tropical complexa oferece um perfil frutado perfeitamente equilibrado sem ser excessivamente doce. Produzido pela Charlie's Chalk Dust, utiliza apenas aromas naturais e é engarrafado em instalações laboratoriais de nível 100.",
+    id: 915,
+    name: "Nic-Salt BLVK Unicorn - Mango Ice",
+    description: "Mango Passion Ice por BLVK N'Yellow Nic Salt a combinação perfeita e refrescante de Manga com Maracujá.",
     price: 149.90,
-    category: "Juices",
-    image: "/images/products/juices/pachamama-fuji.png",
+    category: "Salt",
+    image: "/salt/mangopassion.jpeg",
+    inStock: true,
+    nicotineStrength: 50,
+    volume: 30,
+    flavors: ["Manga", "Maracujá", "Gelada"]
+  },
+  {
+    id: 104,
+    name: "Nic-Salt BLVK Unicorn - Vanilla",
+    description: "BLVK Unicorn Nic Salt Vanilla Custard, reviva os dias de glória dos sabores ousados de sobremesas com o VANILLA Custard, a perfeita harmonia de tons doces de baunilha combinados com o sabor cremoso de creme.",
+    price: 119.90,
+    category: "Salt",
+    image: "/salt/vanillacustard.jpeg",
     inStock: true,
     featured: true,
-    nicotineStrength: 0,
-    volume: 60,
-    flavors: ["Maçã Fuji", "Morango", "Nectarina"]
+    nicotineStrength: 35,
+    volume: 30,
+    flavors: ["Baunilha", "Creme", "Bolo"]
   },
   {
-    id: 20,
-    name: "Juice Jam Monster - Blueberry",
-    description: "O Jam Monster Blueberry recria perfeitamente uma torrada quentinha com manteiga coberta por geleia de mirtilo artesanal. Suas notas de pão torrado, manteiga cremosa e mirtilos doces se combinam para uma experiência de vape indulgente e satisfatória. A formulação Max VG proporciona nuvens densas e sabor intenso.",
-    price: 159.90,
-    category: "Juices",
-    image: "/images/products/juices/jammonster-blueberry.png",
+    id: 285,
+    name: "Nic-Salt BLVK Unicorn - Lemon Tangerine",
+    description: "BLVK Unicorn Nic Salt Lemon Tangerine, uma mistura cítrica de limão e tangerina que cria uma explosão de sabor frutado.",
+    price: 149.90,
+    category: "Salt",
+    image: "/salt/lemontangerine.jpeg",
     inStock: true,
-    nicotineStrength: 3,
-    volume: 100,
-    flavors: ["Mirtilo", "Manteiga", "Torrada"]
+    nicotineStrength: 50,
+    volume: 30,
+    flavors: ["Limão", "Tangerina", "Cítrico"]
+  },
+  {
+    id: 376,
+    name: "Nic-Salt BLVK Unicorn - Tobacco Caramel",
+    description: "BLVK Unicorn Nic Salt Tobacco Caramel, um sabor clássico de tabaco com um toque de caramelo doce.",
+    price: 149.90,
+    category: "Salt",
+    image: "/salt/tobacco.jpeg",
+    inStock: true,
+    nicotineStrength: 50,
+    volume: 30,
+    flavors: ["Tabaco", "Caramelo", "Doce"]
+  },
+  {
+    id: 429,
+    name: "Nic-Salt BLVK Unicorn - Cucumber",
+    description: "BLVK Unicorn Nic Salt Cucumber, uma mistura refrescante de pepino com um toque de mentol.",
+    price: 149.90,
+    category: "Salt",
+    image: "/salt/cucumber.jpeg",
+    inStock: true,
+    nicotineStrength: 50,
+    volume: 30,
+    flavors: ["Pepino", "Mentol", "Fresco"]
+  },
+  {
+    id: 538,
+    name: "Nic-Salt BLVK Unicorn - Tobacco Strawberry",
+    description: "BLVK Unicorn Nic Salt Tobacco Strawberry, um sabor clássico de tabaco com um toque de morango doce.",
+    price: 149.90,  
+    category: "Salt",
+    image: "/salt/tobaccostrawberry.jpeg",
+    inStock: true,
+    nicotineStrength: 50,
+    volume: 30,
+    flavors: ["Tabaco", "Morango", "Doce"]
+  },
+  {
+    id: 647,
+    name: "Nic-Salt BLVK Unicorn - Orange Ice",
+    description: "BLVK Unicorn Nic Salt Orange Ice, uma mistura cítrica de laranja com um toque de mentol.",
+    price: 149.90,
+    category: "Salt",
+    image: "/salt/orangeice.jpeg",
+    inStock: true,
+    nicotineStrength: 50,
+    volume: 30,
+    flavors: ["Laranja", "Mentol", "Fresco"]
+  },
+  {
+    id: 753,
+    name: "Nic-Salt BLVK Unicorn - Citrus Strawberry",
+    description: "BLVK Unicorn Nic Salt Citrus Strawberry, uma mistura cítrica de morango com um toque de limão.",
+    price: 149.90,
+    category: "Salt",
+    image: "/salt/citrus.jpeg",
+    inStock: true,
+    nicotineStrength: 50,
+    volume: 30,
+    flavors: ["Morango", "Limão", "Cítrico"]
+  },
+  {
+    id: 863,
+    name: "Nic-Salt BLVK Unicorn - Iced Berry Banana",
+    description: "BLVK Unicorn Nic Salt Iced Berry Banana, uma mistura de frutas vermelhas e banana com um toque de mentol.",
+    price: 119.90,
+    category: "Salt",
+    image: "/salt/icedberrybanana.jpeg",
+    inStock: true,
+    nicotineStrength: 35,
+    volume: 30,
+    flavors: ["Frutas", "Banana", "Gelada"]
+  },
+  // pods
+  {
+    id: 924,
+    name: "Pod - Kit Zomo Play POD Black",
+    description: "Play combina perfeitamente uma cápsula recarregável substituível e bateria recarregável em um design minimalista. Ele vem com acabamentos de plástico lisos e acabamentos de borracha macia. Encha a cápsula com a sua BLVK Unicorn Nicsalt favorita e experimente.",
+    price: 149.99,
+    category: "Pods",
+    image: "/pods/kitzomo.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Preto", "Vermelho"],
+    volume: 10
+  },
+  {
+    id: 135,
+    name: "Pod - Kit Vapelustion Hannya Airtok POD Mask Girl Pink",
+    description: "Airtok é um produto de nova geração da mais recente linha de produção da Hannya. Embora tenham herdado as vantagens da série Nano, eles realizaram o novo e cuidadoso projeto. Inspirado no isqueiro recarregável e na cor única de animação estilo Hannya, você pode sempre manter o frescor da Hannya. Encha a cápsula com a sua BLVK Unicorn Nicsalt favorita e experimente.",
+    price: 119.90,
+    category: "Pods",
+    image: "/pods/podgirl.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Rosa"],
+    volume: 10
+  },
+  {
+    id: 267,
+    name: "Pod - Kit Desire Pro Black",
+    description: "Desire Design Pro Pod alimentado por bateria interna de 1000mAh, adota tempo de vaping de longa duração, suportando um vape de um dia inteiro para os usuários. O Desire Design Pro Pod vem com capacidade de suco de 2ml e resistência de bobina de 1,2ohm. Ideal para sais de nic. O More Pro Kit tem um chipset projetado pela Desire, trazendo várias proteções e garantindo um vape seguro também.",
+    price: 170.90,
+    category: "Pods",
+    image: "/pods/desire.jpeg",
+    inStock: true,
+    colors: ["Preto"],
+    volume: 10
+  },
+  {
+    id: 381,
+    name: "Pod - Kit Smoking Mi-Pod Royal LM",
+    description: "Mi-POD é um kit de partida de vapor eletrônico inovador e super compacto com capacidade de 2 ml de ejuice e uma bateria integrada de 950mAh feita sob medida. Com um sistema OAS (Oil and Air Separated) patenteado, com fluxo de ar superior e sem vazamentos, o Mi-Pod oferece uma experiência de vaporização totalmente nova. Suporta cartuchos descartáveis e cartuchos recarregáveis.Além disso, o Mi-pod vem com auto-desenho manual, indicadores de energia de 3 cores e uma porta micro-USB, o que o torna muito prático de usar e carregar.",
+    price: 249.90,
+    category: "Pods",
+    image: "/pods/smoking.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Royal Limited Edition", "Carbon Fiber"],
+    volume: 10
+  },
+  {
+    id: 492,
+    name: "Pod - Kit Hannya Nano",
+    description: "Como líder na indústria do tabaco, o VAPELUSTION definitivamente deixará uma marca na lista e o NANO conquistou a reputação dos usuários. A VAPELUSTION continuará a criar impulso e redesenhar o NANO PRO, um avanço e um tributo. Mais uma vez, as infinitas possibilidades foram estimuladas e atualizações foram feitas sob a condição de manter os genes inalterados.",
+    price: 239.90,
+    category: "Pods",
+    image: "/pods/smoking.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Black"],
+    volume: 10
+  },
+  {
+    id: 583,
+    name: "Pod - Kit Lost Vape Lyra Pod Blue Leather",
+    description: "Lost Vape Lyra Pod Kit é um novo pod com várias proteções e carregamento por USB. Alimentado por uma bateria interna de 1000 mAh com um cartucho de substituição de 2 ml. É fácil de preencher. Com dois tipos de bobina Lyra, é adequado para sais de nicotina e e-líquido clássico. ",
+    price: 249.90,
+    category: "Pods",
+    image: "/pods/lyra.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Black"],
+    volume: 10
+  },
+  {
+    id: 654,
+    name: "Pod - Kit Lost Orion",
+    description: "Lost Vape Lyra Pod Kit é um novo pod com várias proteções e carregamento por USB. Alimentado por uma bateria interna de 1000 mAh com um cartucho de substituição de 2 ml. É fácil de preencher. Com dois tipos de bobina Lyra, é adequado para sais de nicotina e e-líquido clássico. ",
+    price: 249.90,
+    category: "Pods",
+    image: "/pods/lost.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Lava"],
+    volume: 10
+  },
+  {
+    id: 767,
+    name: "Pod - Kit Lost Orion",
+    description: "Lost Vape Lyra Pod Kit é um novo pod com várias proteções e carregamento por USB. Alimentado por uma bateria interna de 1000 mAh com um cartucho de substituição de 2 ml. É fácil de preencher. Com dois tipos de bobina Lyra, é adequado para sais de nicotina e e-líquido clássico. ",
+    price: 249.90,
+    category: "Pods",
+    image: "/pods/lost.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Lava"],
+    volume: 10
+  },
+  {
+    id: 879,
+    name: "Pod - Kit Vaporesso XROSS PRO",
+    description: "O XROS PRO é o primeiro a apresentar um pod de 0,4 ohm e potência ajustável de até 30 W na série XROS, oferecendo uma experiência de pod RDL. Ultrapassando os limites de uma experiência profissional de excelente sabor, ele apresenta o modo AXON Super Pulse e a tecnologia de aquecimento COREX. Ultrapassando os limites da experiência profissional de operação refinada, ele apresenta uma tela e um botão práticos.",
+    price: 249.90,
+    category: "Pods",
+    image: "/pods/xros.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Blue", "Black", "Red", "Rainbow", "Silver", "Gold"],
+    volume: 10
+  },
+  {
+    id: 1293,
+    name: "Pod - Kit Auga Black",
+    description:"Augvape com a colaboração de Flawless apresenta o sistema Lyfe Pod, um sistema tudo em um que possui um design ativado por tração capaz de trazer um sabor imenso durante todo o dia. O Lyfe tem uma potência máxima de 7.6W e uma tensão de trabalho de 3.3 a 4.2V. Alimentando o Lyfe é uma bateria de 300 mAh que pode durar quase um dia inteiro. Um recipiente substituível de 2 ml fica magneticamente no topo do Lyfe.",
+    price: 149.90,
+    category: "Pods",
+    image: "/pods/auga.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Black"],
+    volume: 10
+  },
+  {
+    id: 3333,
+    name: "Pod - Kit OXVA Origin X",
+    description: "O Kit OXVA Origin X foi projetado por Justin Lai. O Origin X é alimentado por 18650 (não incluída), um kit inovador com cartucho em forma de L para alcançar a perfeição de absorção e suporta construções de bobina dupla. O comprovado Unicoil em 0.2? dispara até 60w para liberar um sabor incrível. É também a versão de atualização para o KIT OXVA Origin POD 40W. Uma virada de jogo definitiva para usuários de bobinas pré-fabricadas e vapers DIY.",
+    price: 249.90,
+    category: "Pods",
+    image: "/pods/oxva.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Green"],
+  },
+  {
+    id: 4930,
+    name: "Pod - Kit Suorin Black",
+    description: "Suorin Drop Starter Kit, um kit inicial ultra compacto projetado para e-smoking em movimento ou simplesmente procurando um dispositivo fácil de usar. ",
+    price: 149.90,
+    category: "Pods",
+    image: "/pods/suorin.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Black"],
+  },
+  {
+    id: 9938,
+    name: "Pod - Kit Caliburn Prime",
+    description: "A UWELL lançou o novo KOKO PRIME, o design dos painêis magnéticos decorativos substituíveis aumentou a diversâo do produto. Diferentes combinações de cores de decorações exteriores podem ser substituidas a vontade, com mais seletividade e creatividade trocando painêis decorativos com amigos, criando uma cultura fashion de vapor.",
+    price: 149.90,
+    category: "Pods",
+    image: "/pods/caliburn.jpeg",
+    inStock: true,
+    featured: true,
+    colors: ["Black"],
   }
-  */
 ];
