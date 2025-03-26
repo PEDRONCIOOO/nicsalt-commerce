@@ -1,29 +1,29 @@
 "use client";
-import React, { useState } from 'react';
+
+import { useState } from 'react';
 import { ShoppingCart } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from './CartContext';
 
 interface CartIconProps {
     className?: string;
     size?: number;
     color?: string;
     onClick?: () => void;
-    itemCount?: number;
 }
 
 const CartIcon: React.FC<CartIconProps> = ({
-    className,
+    className = "",
     size = 24,
     color,
     onClick,
-    itemCount = 0,
 }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const { itemCount } = useCart();
 
     return (
         <motion.div 
-            className={cn("relative inline-flex items-center justify-center cursor-pointer", className)}
+            className={`relative inline-flex items-center justify-center cursor-pointer cart-icon ${className}`}
             onClick={onClick}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
@@ -37,7 +37,11 @@ const CartIcon: React.FC<CartIconProps> = ({
                 animate={isHovered ? { y: [0, -3, 0], rotate: [-2, 2, -2, 0] } : {}}
                 transition={{ duration: 0.5 }}
             >
-                <ShoppingCart size={size} color={color || "currentColor"} className="text-gray-800 dark:text-gray-300" />
+                <ShoppingCart 
+                    size={size} 
+                    color={color || "currentColor"} 
+                    className="text-gray-800 dark:text-gray-300" 
+                />
             </motion.div>
             
             {/* Cart item counter badge */}
@@ -66,7 +70,7 @@ const CartIcon: React.FC<CartIconProps> = ({
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 5 }}
-                        className="absolute -bottom-8 whitespace-nowrap bg-gray-300 dark:bg-gray-800 text-gray-800 dark:text-gray-300 text-xs rounded py-1 px-2 pointer-events-none"
+                        className="absolute -bottom-8 whitespace-nowrap bg-gray-300 dark:bg-gray-800 text-gray-800 dark:text-gray-300 text-xs rounded py-1 px-2 pointer-events-none z-50"
                     >
                         {itemCount === 0 ? "Carrinho vazio" : `${itemCount} ${itemCount === 1 ? 'item' : 'itens'} no carrinho`}
                     </motion.div>
